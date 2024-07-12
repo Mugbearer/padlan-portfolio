@@ -1,5 +1,8 @@
 import { useState } from "react";
 import "./App.css";
+import classNames from "classnames";
+import CloseMenuButton from "./components/CloseMenuButton";
+import OpenMenuButton from "./components/OpenMenuButton";
 
 function App() {
   const [isVisibleSidebar, setIsVisibleSidebar] = useState(false);
@@ -10,67 +13,56 @@ function App() {
 
   return (
     <>
-      <nav>
+      <nav className="shadow-md">
         <ul
-          style={{ display: isVisibleSidebar ? "flex" : "none" }}
-          className="sidebar"
+          // style={{ display: isVisibleSidebar ? "flex" : "none" }}
+          className={classNames(
+            { hidden: !isVisibleSidebar },
+            "fixed",
+            "top-0",
+            "right-0",
+            "w-full",
+            "sm:w-64",
+            "sidebar"
+          )}
         >
-          <li>
-            <a href="#">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                height="30"
-                viewBox="0 96 960 960"
-                width="30"
-                onClick={toggleVisibilitySidebar}
-              >
-                <path d="m249 849-42-42 231-231-231-231 42-42 231 231 231-231 42 42-231 231 231 231-42 42-231-231-231 231Z" />
-              </svg>
-            </a>
+          <li className="w-full">
+            <CloseMenuButton onButtonClick={toggleVisibilitySidebar} />
           </li>
-          <li>
+          <li className="w-full">
             <a href="#projects">Projects</a>
           </li>
-          <li>
+          <li className="w-full">
             <a href="#certificates">Certificates</a>
           </li>
-          <li>
+          <li className="w-full">
             <a href="#competitions">Competitions</a>
           </li>
-          <li>
+          <li className="w-full">
             <a href="#contact">Contact</a>
           </li>
-          <li>
+          <li className="w-full">
             <a href="#">Download CV</a>
           </li>
         </ul>
-        <ul className="top-bar">
-          <li className="hideOnMobile">
+        <ul className="w-full text-xl top-bar">
+          <li className="hidden md:list-item h-16">
             <a href="#projects">Projects</a>
           </li>
-          <li className="hideOnMobile">
+          <li className="hidden md:list-item h-16">
             <a href="#certificates">Certificates</a>
           </li>
-          <li className="hideOnMobile">
+          <li className="hidden md:list-item h-16">
             <a href="#competitions">Competitions</a>
           </li>
-          <li className="hideOnMobile">
+          <li className="hidden md:list-item h-16">
             <a href="#contact">Contact</a>
           </li>
-          <li className="hideOnMobile">
+          <li className="hidden md:list-item h-16">
             <a href="#">Download CV</a>
           </li>
-          <li className="menu-button">
-            <a href="#" onClick={toggleVisibilitySidebar}>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                height="30"
-                viewBox="0 96 960 960"
-                width="30"
-              >
-                <path d="M120 816v-60h720v60H120Zm0-210v-60h720v60H120Zm0-210v-60h720v60H120Z" />
-              </svg>
-            </a>
+          <li className="menu-button md:hidden">
+            <OpenMenuButton onButtonClick={toggleVisibilitySidebar} />
           </li>
         </ul>
       </nav>
