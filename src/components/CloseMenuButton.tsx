@@ -4,7 +4,20 @@ interface CloseMenuButtonProps {
 
 const CloseMenuButton: React.FC<CloseMenuButtonProps> = ({ onButtonClick }) => {
   return (
-    <button onClick={onButtonClick}>
+    <button
+      onClick={onButtonClick}
+      style={{
+        width: "30px", // Match SVG width
+        height: "30px", // Match SVG height
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        border: "none",
+        backgroundColor: "transparent",
+        cursor: "pointer",
+        padding: 0, // Remove default padding
+      }}
+    >
       <svg
         xmlns="http://www.w3.org/2000/svg"
         height="30"
